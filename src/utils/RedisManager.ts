@@ -1,4 +1,5 @@
 import { Redis } from "ioredis";
+import { logger } from "./logger";
 
 interface RedisConfig {
   host: string;
@@ -37,8 +38,12 @@ export class RedisManager {
       }
     });
 
+    logger.info("Subscribed to channel");
+
     this.redis.on("message", async (currentChannelMessageEvent, message) => {
       if (currentChannelMessageEvent === channel) {
+        logger.info(`Received message from channel ${channel}`);
+
         callback(JSON.parse(message));
       }
     });
