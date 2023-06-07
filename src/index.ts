@@ -2,6 +2,7 @@ import "dotenv/config";
 import { RedisManager } from "./utils/RedisManager";
 import { Bot } from "./utils/bot";
 import { Env } from "./utils/env";
+import { getOnlyClassCode } from "./utils/getOnlyClassCode";
 import { logger } from "./utils/logger";
 
 interface ClassMessage {
@@ -38,9 +39,13 @@ interface ClassMessage {
         
         Segunda aula: ${secondClass}
       
-        Periodo: **${period}**
-        
+        Sala 1: **${getOnlyClassCode(firstClass)}**
+
+        Sala 2: **${getOnlyClassCode(secondClass)}**
+
         Matricula: **${matricula}**
+
+        Periodo: **${period}**
   
       `;
 
