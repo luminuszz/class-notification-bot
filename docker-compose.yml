@@ -3,6 +3,7 @@ version: "3.7"
 services:
   app:
     build: .
+    container_name: "class-motification-service"
     restart: "always"
     env_file:
       - .env
